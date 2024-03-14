@@ -11,7 +11,7 @@
   --clr-ricevuto: white;
   --clr-black: black;
   --bg-desktop: linear-gradient(to bottom, #009688 0%,#009688 15%, #DADBD4 15%, #DADBD4 85%);
-  --bg-img-chat:url(../assests/img/mine.jpg);
+  --bg-img-chat:url(../img/mine.jpg);
 }
 /*DARK*/
 
@@ -92,6 +92,11 @@ body{
 }
 
 /*UTILITY*/
+
+.d-none{
+  display: none;
+
+}
 
 .inp-clr{
   background-color: var(--clr-input);
@@ -241,6 +246,8 @@ body{
 }
 
 .cont-txt {
+  width: 240px;
+  height: 40px;
   padding: 15px 60px 0px 0px;
 }
 
@@ -326,14 +333,14 @@ body{
   line-height: 25px;
   border-radius: 20px;
   width: 160px;
-  display: none;
 }
 
-.action-chev:hover .func-mess{
-  display: block;
-}
 
-.func-mess p:hover {
+
+
+
+
+.func-mess p {
   padding: 0px 5px;
   border-radius: 20px;
   background-color: var(--clr-white);
@@ -396,4 +403,5 @@ body{
       margin: 20px 60px;
       width: 65%;
     }
+    
 }

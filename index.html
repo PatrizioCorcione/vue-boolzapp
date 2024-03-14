@@ -20,7 +20,8 @@
         <div class="colum">
           <div class="focus back-gray heig-avatar d-flex just-arau">
             <div class="img d-flex ali-cent">
-              <img class="avatar" src="assests/img/avatar_io.jpg"alt="">
+              <img class="avatar" src="img/avatar_2.jpg"alt="">
+              <p>Patrizio   Corcione</p>
             </div>
             <div class="utility d-flex ali-cent">
               <i class="fa-solid fa-circle-notch"></i>
@@ -74,9 +75,9 @@
         <div class="colum">
           <div class="bord-gray focus back-gray heig-avatar d-flex just-arau">
             <div class="img d-flex ali-cent">
-              <img class="avatar" src="assests/img/avatar_1.jpg" alt="">
+              <img class="avatar" :src="contacts[counterChat].avatar" alt="">
               <div class="img-txt">
-                <strong>Michele</strong>
+                <strong>{{contacts[counterChat].name}}</strong>
                 <p class="color-gray font-s">Ultimo accesso oggi alle 16:26</p>
               </div>
 
@@ -91,7 +92,8 @@
           </div>
           <div class="chat scroll d-flex direc-colum">
             <div
-            v-for="(text) in contacts[counterChat].messages"
+            v-for="(text,index) in contacts[counterChat].messages"
+            counterText="index"
             :class="text.status === 'sent'
             ? 'inviato' 
             : 'ricevuto'"
@@ -101,11 +103,15 @@
               {{text.message}}
               
               <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
+                <i
+                 @click="seeOption(index)"                
+                 class="action-chev color-gray fa-solid fa-chevron-down">
+                  <div class="d-none func-mess posi-abso color-indaco">
                     <p>Copia messaggio</p>
                     <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
+                    <p
+                    @click.stop="contacts[counterChat].messages.splice(index, 1);seeOption(index)"
+                    >Cancella messaggio</p>
                   </div>
                 </i>
                 12:40

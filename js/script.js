@@ -1,6 +1,6 @@
 import { contacts } from "./data.js";
 
-// Milestone 1
+
 
 const { createApp } = Vue;
 
@@ -13,6 +13,7 @@ createApp({
       newMessage: '',
       searchUtente: '',
       
+      
     }
 
   },
@@ -20,15 +21,23 @@ createApp({
     
     findLastMessage(index) {
       const {messages} = this.contacts[index];
-      return messages[messages.length - 1].message;
+      if (messages.length > 0) {
+
+        return messages[messages.length - 1].message;
+        
+      }else{
+        return 'Nessun messaggio';
+      }
+      
     },
 
     sendMessage(index){
         this.contacts[index].messages.push({
         date: '10/01/2020 15:50:00',
         message: this.newMessage,
-        status: 'sent'
+        status: 'sent',
         });
+        this.newMessage = '';
         setTimeout(() => {
           this.contacts[index].messages.push({
             date: '10/01/2020 16:15:22',
@@ -37,6 +46,13 @@ createApp({
           });
         }, 1000);
     },
+
+    seeOption( index){
+      const allMess = document.querySelectorAll('.func-mess');
+      
+      allMess[index].classList.toggle('d-none');
+    
+    }
   },
 
   computed: {
