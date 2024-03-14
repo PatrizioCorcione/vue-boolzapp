@@ -56,13 +56,18 @@ createApp({
   },
 
   computed: {
-     filteredContacts() {
-      return this.contacts.filter((element) => 
-
-         element.name.toLowerCase().includes(this.searchUtente.toLowerCase()),
-       );
-     }
-   }
+    notAfilter() {
+      return this.contacts.forEach(contact => {
+        if (contact.name.toLowerCase().includes(this.searchUtente.toLowerCase())) {
+          contact.visible = true;
+        } else {
+          contact.visible = false;
+        }
+        
+      });
+    }
+    
+  }
    
 
 }).mount('#app');  

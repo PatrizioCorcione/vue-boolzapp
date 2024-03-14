@@ -51,9 +51,10 @@
           <div class="contatti scroll">
 
             <div 
-            v-for="(contact,index) in filteredContacts"
+            v-for="(contact,index) in contacts"
+            v-if="(contacts[index].visible==true)"
             
-            @click="counterChat = index" 
+            @click="counterChat = index;" 
             class="focus heig-avatar d-flex just-arau"
             >
               <div class="img d-flex ali-cent">
