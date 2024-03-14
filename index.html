@@ -11,7 +11,7 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <title>Document</title>
 </head>
-<body class="dark">
+<body class="">
   <main id="app">
     <section class="container">
 
@@ -47,7 +47,8 @@
           <div class="contatti scroll">
 
             <div 
-            v-for="contact in contacts" 
+            v-for="(contact,index) in contacts"
+            @click="counterChat = index" 
             class="focus heig-avatar d-flex just-arau"
             >
               <div class="img d-flex ali-cent">
@@ -55,7 +56,7 @@
               </div>
               <div class="cont-txt">
                 <strong>{{contact.name}}</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
+                <p class=" color-gray font-s">{{findLastMessage(index)}}</p>
               </div>
               <div class="time color-gray font-s">
                 12:30
@@ -85,8 +86,15 @@
 
           </div>
           <div class="chat scroll d-flex direc-colum">
-            <div class="ricevuto posi-rela">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum id in ab! Animi atque quaerat molestias odit neque aliquid vitae, vero ut iusto perferendis quisquam assumenda distinctio inventore. Fugit, voluptas!
+            <div
+            v-for="(text) in contacts[counterChat].messages"
+            :class="text.status === 'sent'
+            ? 'inviato' 
+            : 'ricevuto'"
+             class="ricevuto posi-rela"
+
+             >
+              {{text.message}}
               
               <div class="time-chat d-flex color-gray font-s">
                 <i class="action-chev color-gray fa-solid fa-chevron-down">
@@ -100,105 +108,7 @@
               </div>
 
             </div>
-            <div class="inviato posi-rela">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis aliquid non accusamus delectus! Eum nihil ex quae libero, sit, aliquid animi quas in dolorum exercitationem quod mollitia aliquam unde sequi.
-              <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
-                    <p>Copia messaggio</p>
-                    <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
-                  </div>
-                </i>
-                12:40
-              </div>
-              
-
-            </div>
-            <div class="ricevuto posi-rela">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum id in ab! Animi atque quaerat molestias odit neque aliquid vitae, vero ut iusto perferendis quisquam assumenda distinctio inventore. Fugit, voluptas!
-              <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
-                    <p>Copia messaggio</p>
-                    <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
-                  </div>
-                </i>
-                12:40
-              </div>
-
-            </div>
-            <div class="inviato posi-rela">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis aliquid non accusamus delectus! Eum nihil ex quae libero, sit, aliquid animi quas in dolorum exercitationem quod mollitia aliquam unde sequi.
-              <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
-                    <p>Copia messaggio</p>
-                    <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
-                  </div>
-                </i>
-                12:40
-              </div>
-
-            </div>
-            <div class="ricevuto posi-rela">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum id in ab! Animi atque quaerat molestias odit neque aliquid vitae, vero ut iusto perferendis quisquam assumenda distinctio inventore. Fugit, voluptas!
-              <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
-                    <p>Copia messaggio</p>
-                    <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
-                  </div>
-                </i>
-                12:40
-              </div>
-
-            </div>
-            <div class="inviato posi-rela">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis aliquid non accusamus delectus! Eum nihil ex quae libero, sit, aliquid animi quas in dolorum exercitationem quod mollitia aliquam unde sequi.
-              <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
-                    <p>Copia messaggio</p>
-                    <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
-                  </div>
-                </i>
-                12:40
-              </div>
-
-            </div>
-            <div class="ricevuto posi-rela">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum id in ab! Animi atque quaerat molestias odit neque aliquid vitae, vero ut iusto perferendis quisquam assumenda distinctio inventore. Fugit, voluptas!
-              <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
-                    <p>Copia messaggio</p>
-                    <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
-                  </div>
-                </i>
-                12:40
-              </div>
-
-            </div>
-            <div class="inviato posi-rela">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis aliquid non accusamus delectus! Eum nihil ex quae libero, sit, aliquid animi quas in dolorum exercitationem quod mollitia aliquam unde sequi.
-              <div class="time-chat d-flex color-gray font-s">
-                <i class="action-chev color-gray fa-solid fa-chevron-down">
-                  <div class="func-mess posi-abso color-indaco">
-                    <p>Copia messaggio</p>
-                    <p>Info messaggio</p>
-                    <p>Cancella messaggio</p>
-                  </div>
-                </i>
-                12:40
-              </div>
-
-            </div>
+            
 
           </div>
           <div class="bord-gray write heig-avatar back-gray d-flex ali-cent just-arau">

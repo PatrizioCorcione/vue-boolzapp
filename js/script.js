@@ -8,9 +8,20 @@ createApp({
   data () {
     return {
       contacts,
+      counterChat: 0,
       
       
     }
+
+  },
+  methods: {
+    
+    findLastMessage(index) {
+      const {messages} = this.contacts[index];
+      
+      return messages[messages.length - 1].message;
+      
+    },
 
   },
 
