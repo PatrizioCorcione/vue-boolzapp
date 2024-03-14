@@ -117,7 +117,10 @@
 
             </div>
             <div class="inp">
-              <input class=" inp-clr" type="text" placeholder="   Scrivi un messaggio" name="" id="">
+              <input
+               v-model="newMessage"
+               @keyup.enter="sendMessage(counterChat)"
+               class=" inp-clr" type="text" placeholder="   Scrivi un messaggio" name="" id="">
 
             </div>
             <div class="micro txt-cent">
