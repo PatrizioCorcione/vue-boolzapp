@@ -42,12 +42,16 @@
           </div>
           <div class="cerca back-gray">
             <button type="submit"><i class="color-gray fa fa-search"></i></button>
-            <input class="inp-clr" type="text" placeholder="Cerca o inizia una nuova chat" name="search">
+            <input
+             v-model="searchUtente"
+              
+             class="inp-clr" type="text" placeholder="Cerca o inizia una nuova chat" name="search">
           </div>
           <div class="contatti scroll">
 
             <div 
-            v-for="(contact,index) in contacts"
+            v-for="(contact,index) in filteredContacts"
+            
             @click="counterChat = index" 
             class="focus heig-avatar d-flex just-arau"
             >

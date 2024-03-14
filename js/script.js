@@ -11,38 +11,43 @@ createApp({
       contacts,
       counterChat: 0,
       newMessage: '',
+      searchUtente: '',
       
     }
 
   },
   methods: {
     
-        findLastMessage(index) {
+    findLastMessage(index) {
+      const {messages} = this.contacts[index];
+      return messages[messages.length - 1].message;
+    },
 
-          const {messages} = this.contacts[index];
-          
-          return messages[messages.length - 1].message;
-          
-        },
-        sendMessage(index){
-          
-            this.contacts[index].messages.push({
-            date: '10/01/2020 15:50:00',
-            message: this.newMessage,
-            status: 'sent'
-            });
-            setTimeout(() => {
-              this.contacts[index].messages.push({
-                date: '10/01/2020 16:15:22',
-                message: 'Tutto fatto!',
-                status: 'received'
-              });
-            }, 1000);
+    sendMessage(index){
+        this.contacts[index].messages.push({
+        date: '10/01/2020 15:50:00',
+        message: this.newMessage,
+        status: 'sent'
+        });
+        setTimeout(() => {
+          this.contacts[index].messages.push({
+            date: '10/01/2020 16:15:22',
+            message: 'Tutto fatto!',
+            status: 'received'
+          });
+        }, 1000);
+    },
+  },
 
-        }
+  computed: {
+     filteredContacts() {
+      return this.contacts.filter((element) => 
 
-      },
+         element.name.toLowerCase().includes(this.searchUtente.toLowerCase()),
+       );
+     }
+   }
+   
 
-
-    }).mount('#app');  
+}).mount('#app');  
 
