@@ -57,7 +57,7 @@ createApp({
 
   computed: {
     notAfilter() {
-      return this.contacts.forEach(contact => {
+      this.contacts.forEach(contact => {
         if (contact.name.toLowerCase().includes(this.searchUtente.toLowerCase())) {
           contact.visible = true;
         } else {
@@ -65,6 +65,7 @@ createApp({
         }
         
       });
+      return this.contacts;
     }
     
   }
