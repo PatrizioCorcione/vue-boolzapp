@@ -45,133 +45,20 @@
             <input class="inp-clr" type="text" placeholder="Cerca o inizia una nuova chat" name="search">
           </div>
           <div class="contatti scroll">
-            <div class="focus heig-avatar d-flex just-arau">
+
+            <div 
+            v-for="contact in contacts" 
+            class="focus heig-avatar d-flex just-arau"
+            >
               <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_2.jpg"alt="">
+                <img class="avatar" :src="contact.avatar" :alt="contact.name">
               </div>
               <div class="cont-txt">
-                <strong>Fabio</strong>
+                <strong>{{contact.name}}</strong>
                 <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
               </div>
               <div class="time color-gray font-s">
                 12:30
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_3.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Samuele</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                12:20
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_4.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Alessandro B.</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                12:10
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_5.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Alessandro L.</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                12:00
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_6.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Claudia</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                11:50
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_7.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Federico</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                11:40
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_8.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Davide</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                11:30
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_2.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Patrizio</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                11:20
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_1.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Stefano</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                11:10
-              </div>
-            </div>
-            
-            <div class="focus heig-avatar d-flex just-arau">
-              <div class="img d-flex ali-cent">
-                <img class="avatar" src="assests/img/avatar_3.jpg"alt="">
-              </div>
-              <div class="cont-txt">
-                <strong>Jomar</strong>
-                <p class=" color-gray font-s">lorem ipsum dolor maxumus</p>
-              </div>
-              <div class="time color-gray font-s">
-                11:00
               </div>
             </div>
             
