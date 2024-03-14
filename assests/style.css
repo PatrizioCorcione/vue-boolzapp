@@ -189,6 +189,7 @@ body{
 }
 
 .contatti{
+  background-color: var(--clr-white);
   height: calc(100% - 200px);
 }
 
@@ -279,17 +280,19 @@ body{
 
 .ricevuto{
   display: flex;
-  color: var(--clr-inda);
+  color: var(--clr-black);
   background-color: var(--clr-ricevuto);
   border-radius: 10px;
   margin: 20px 120px;
   width: 40%;
   padding: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .inviato{
   display: flex;
-  color: var(--clr-ricevuto);
+  color: var(--clr-black);
   background-color: var(--clr-send);
   border-radius: 10px;
   margin: 20px 120px;
@@ -327,12 +330,19 @@ body{
 
 .func-mess{
   font-family: "Lato", sans-serif;
-  background-color: var(--clr-gray-tre);
+  background-color: var(--clr-white);
   right: 7px;
   padding: 10px 15px;
   line-height: 25px;
   border-radius: 20px;
   width: 160px;
+  z-index: 9999;
+}
+
+.func-mess p{
+  padding: 0px 5px;
+  border-radius: 20px;
+  background-color: var(--clr-white);
 }
 
 
@@ -340,10 +350,10 @@ body{
 
 
 
-.func-mess p {
-  padding: 0px 5px;
-  border-radius: 20px;
-  background-color: var(--clr-white);
+.func-mess p:hover {
+
+  background-color: var(--clr-gray-sec);
+
 
 }
 
@@ -372,6 +382,7 @@ body{
     }
 
     .ricevuto {
+      color: var(--clr-sky);
       margin: 20px 80px;
       width: 50%;
     }
