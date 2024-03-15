@@ -3,6 +3,7 @@ import { contacts } from "./data.js";
 
 
 const { createApp } = Vue;
+const {DateTime} = luxon;
 
 createApp({
   data () {
@@ -12,6 +13,7 @@ createApp({
       counterChat: 0,
       newMessage: '',
       searchUtente: '',
+      accessoUtente:this.getData(),
       
       
     }
@@ -33,16 +35,17 @@ createApp({
 
     sendMessage(index){
         this.contacts[index].messages.push({
-        date: '10/01/2020 15:50:00',
+        date: this.getData(index), 
         message: this.newMessage,
         status: 'sent',
         });
         this.newMessage = '';
         setTimeout(() => {
+          this.accessoUtente = this.getData(index);
           this.contacts[index].messages.push({
-            date: '10/01/2020 16:15:22',
+            date: this.accessoUtente,
             message: 'Tutto fatto!',
-            status: 'received'
+            status: 'received',
           });
         }, 1000);
     },
@@ -52,9 +55,23 @@ createApp({
       
       allMess[index].classList.toggle('d-none');
     
-    }
+    },
+
+    getMinut(){
+    const date = DateTime.now().setLocale('it');
+    return date.toFormat('hh:mm');
+    },
+
+    getData(){
+      const date = DateTime.now().setLocale('it');
+      return date.toFormat('dd/MM/yyyy HH:mm:ss');
+    },
+
+    
+
   },
 
+  
   computed: {
     notAfilter() {
       this.contacts.forEach(contact => {
@@ -66,9 +83,13 @@ createApp({
         
       });
       return this.contacts;
-    }
+    },
+
     
-  }
+    
+  },
+
+  
    
 
 }).mount('#app');  
