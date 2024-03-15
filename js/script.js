@@ -13,7 +13,7 @@ createApp({
       counterChat: 0,
       newMessage: '',
       searchUtente: '',
-      accessoUtente:this.getData(),
+      
       
       
     }
@@ -64,7 +64,7 @@ createApp({
 
     getData(){
       const date = DateTime.now().setLocale('it');
-      return date.toFormat('dd/MM/yyyy HH:mm:ss');
+      return date.toFormat('dd/MM/yyyy HH:mm');
     },
 
     
@@ -84,6 +84,12 @@ createApp({
       });
       return this.contacts;
     },
+
+    lastDate(){
+      const {messages} = this.contacts[this.counterChat];
+      return messages[messages.length - 1].date;
+
+    }
 
     
     
