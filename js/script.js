@@ -28,22 +28,22 @@ createApp({
       
     },
 
-    sendMessage(){
-        this.contacts[this.counterChat].messages.push({
-        date: this.getMinut(), 
-        message: this.newMessage,
-        status: 'sent',
-        });
-        this.newMessage = '';
-        setTimeout(() => {
-          this.accessoUtente = this.getMinut(this.counterChat);
-          this.contacts[this.counterChat].messages.push({
-            date: this.accessoUtente,
-            message: 'Tutto fatto!',
-            status: 'received',
-          });
-        }, 1000);
-    },
+    // sendMessage(){
+    //     const messageDate = this.getMinut();
+    //     this.contacts[this.counterChat].messages.push({
+    //     date: messageDate, 
+    //     message: this.newMessage,
+    //     status: 'sent',
+    //     });
+    //     this.newMessage = '';
+    //     setTimeout(() => {
+    //       this.contacts[this.counterChat].messages.push({
+    //         date: this.getMinut(),
+    //         message: 'Tutto fatto!',
+    //         status: 'received',
+    //       });
+    //     }, 2000);
+    // },
 
     seeOption(index){
       const allMess = document.querySelectorAll('.func-mess');
@@ -54,7 +54,8 @@ createApp({
       const contact = this.contacts[index];
       if (contact && contact.messages.length > 0) {
         const lastMinDate = contact.messages[contact.messages.length - 1].date;
-        return lastMinDate;
+        const word = lastMinDate.split(' ');
+        return word[1];
       } else {
         return 'Nessun messaggio';
       }
@@ -62,9 +63,11 @@ createApp({
 
     getMinut(){
       const date = DateTime.now().setLocale('it');
+      console.log('Ora corrente:', date.toFormat('dd/MM/yyyy HH:mm:ss')); // Log dell'ora corrente
       return date.toFormat('dd/MM/yyyy HH:mm:ss');
     },
-
+    
+    
   },
 
   computed: {
