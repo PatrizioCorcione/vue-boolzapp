@@ -1,3 +1,4 @@
+<!-- FILEPATH: /C:/Users/patri/Desktop/Documenti/Boolean/VUE/vue-boolzapp/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,24 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assests/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' integrity='sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==' crossorigin='anonymous'/>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' integrity='sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==' crossorigin='anonymous'/>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
   <title>Document</title>
 </head>
 <body class="">
   <main id="app">
     <section class="container">
-
       <div class="row d-flex">
-        <!--PRIMA COLONNA-->
+        <!-- PRIMA COLONNA -->
         <div class="colum">
           <div class="focus back-gray heig-avatar d-flex just-arau">
             <div class="img d-flex ali-cent">
-              <img class="avatar" src="img/avatar_2.jpg"alt="">
-              <p>Patrizio   Corcione</p>
+              <img class="avatar" src="img/avatar_2.jpg" alt="">
+              <p>Patrizio Corcione</p>
             </div>
             <div class="utility d-flex ali-cent">
               <i class="fa-solid fa-circle-notch"></i>
@@ -30,8 +30,7 @@
               <i class="fa-solid fa-ellipsis-vertical"></i>
             </div>
           </div>
-          
-          <div class="notifiche d-flex ali-cent  back-sky heig-avatar">
+          <div class="notifiche d-flex ali-cent back-sky heig-avatar">
             <div class="silence back-white">
               <i class="fa-solid fa-bell-slash"></i>
             </div>
@@ -39,42 +38,27 @@
               <p>Ricevi notifiche di nuovi messsaggi</p>
               <a class="color-indaco font-s" href="">Attiva notifiche desktop</a>
             </div>
-            
-
           </div>
           <div class="cerca back-gray">
             <button type="submit"><i class="color-gray fa fa-search"></i></button>
-            <input
-             v-model="searchUtente"
-              
-             class="inp-clr" type="text" placeholder="Cerca o inizia una nuova chat" name="search">
+            <input v-model="searchUtente" class="inp-clr" type="text" placeholder="Cerca o inizia una nuova chat" name="search">
           </div>
           <div class="contatti scroll">
-
-            <div 
-
-            v-for="(contact,index) in notAfilter"
-            v-show="contact.visible"
-            @click="counterChat = index;" 
-            class="focus heig-avatar d-flex just-arau"
-
-            >
+            <div v-for="(contact,index) in notAfilter" v-show="contact.visible" @click="counterChat = index;" class="focus heig-avatar d-flex just-arau">
               <div class="img d-flex ali-cent">
                 <img class="avatar" :src="contact.avatar" :alt="contact.name">
               </div>
               <div class="cont-txt">
                 <strong>{{contact.name}}</strong>
-                <p class=" color-gray font-s">{{findLastMessage(index)}}</p>
+                <p class="color-gray font-s">{{findLastMessage(index)}}</p>
               </div>
               <div class="time color-gray font-s">
-                <span>{{getMinutMsg(index)}}</span>
+                <span>{{getMinutChat(index)}}</span>
               </div>
             </div>
-            
           </div>
-
         </div>
-        <!--SECONDA COLONNA-->
+        <!-- SECONDA COLONNA -->
         <div class="colum">
           <div class="bord-gray focus back-gray heig-avatar d-flex just-arau">
             <div class="img d-flex ali-cent">
@@ -83,71 +67,44 @@
                 <strong>{{contacts[counterChat].name}}</strong>
                 <p class="color-gray font-s">Ultimo accesso {{lastDate}}</p>
               </div>
-
             </div>
             <div class="utility d-flex ali-cent">
               <i class="fa-solid fa-magnifying-glass"></i>
               <i class="fa-solid fa-paperclip"></i>
               <i class="fa-solid fa-ellipsis-vertical"></i>
-
             </div>
-
           </div>
           <div class="chat scroll d-flex direc-colum">
-            <div
-            v-for="(text,index) in contacts[counterChat].messages"
-            :class="text.status === 'sent'
-            ? 'inviato' 
-            : 'ricevuto'"
-             class="ricevuto posi-rela"
-
-             >
+            <div v-for="(text,index) in contacts[counterChat].messages" :class="text.status === 'sent' ? 'inviato' : 'ricevuto'" class="ricevuto posi-rela">
               {{text.message}}
-              
               <div class="time-chat d-flex color-gray font-s">
-                <i
-                 @click="seeOption(index)"                
-                 class="action-chev color-gray fa-solid fa-chevron-down">
+                <i @click="seeOption(index)" class="action-chev color-gray fa-solid fa-chevron-down">
                   <div class="d-none func-mess posi-abso color-indaco">
                     <p>Copia messaggio</p>
                     <p>Info messaggio</p>
-                    <p
-                    @click.stop="contacts[counterChat].messages.splice(index, 1);seeOption(index)"
-                    >Cancella messaggio</p>
+                    <p @click.stop="contacts[counterChat].messages.splice(index, 1);seeOption(index)">Cancella messaggio</p>
                   </div>
                 </i>
-                <span>{{getMinutMsg(counterChat)}}</span>
+                <span> {{getMinutMsg(index)}}</span>
               </div>
-
             </div>
-            
-
           </div>
           <div class="bord-gray write heig-avatar back-gray d-flex ali-cent just-arau">
             <div class="smile txt-cent">
-              <i class="color-gray fa-regular fa-face-smile "></i>
-
+              <i class="color-gray fa-regular fa-face-smile"></i>
             </div>
             <div class="inp">
-              <input
-               v-model="newMessage"
-               @keyup.enter="sendMessage()"
-               class=" inp-clr" type="text" placeholder="   Scrivi un messaggio" name="" id="">
-
+              <input v-model="newMessage" @keyup.enter="sendMessage()" class="inp-clr" type="text" placeholder="Scrivi un messaggio" name="" id="">
             </div>
             <div class="micro txt-cent">
               <i class="color-gray fa-solid fa-microphone"></i>
-
             </div>
-            
           </div>
-
         </div>
-
       </div>
-
     </section>
   </main>
   <script type="module" src="js/script.js"></script>
 </body>
 </html>
+<!-- END: FILEPATH: /C:/Users/patri/Desktop/Documenti/Boolean/VUE/vue-boolzapp/index.html -->

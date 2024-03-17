@@ -28,32 +28,40 @@ createApp({
       
     },
 
-    // sendMessage(){
-    //     const messageDate = this.getMinut();
-    //     this.contacts[this.counterChat].messages.push({
-    //     date: messageDate, 
-    //     message: this.newMessage,
-    //     status: 'sent',
-    //     });
-    //     this.newMessage = '';
-    //     setTimeout(() => {
-    //       this.contacts[this.counterChat].messages.push({
-    //         date: this.getMinut(),
-    //         message: 'Tutto fatto!',
-    //         status: 'received',
-    //       });
-    //     }, 2000);
-    // },
+    sendMessage(){
+        this.contacts[this.counterChat].messages.push({
+        date: this.getMinut(), 
+        message: this.newMessage,
+        status: 'sent',
+        });
+        this.newMessage = '';
+        setTimeout(() => {
+          this.contacts[this.counterChat].messages.push({
+            date: this.getMinut(),
+            message: 'Tutto fatto!',
+            status: 'received',
+          });
+        }, 2000);
+    },
 
     seeOption(index){
       const allMess = document.querySelectorAll('.func-mess');
       allMess[index].classList.toggle('d-none');
     },
 
-    getMinutMsg(index) {
-      const contact = this.contacts[index];
-      if (contact && contact.messages.length > 0) {
-        const lastMinDate = contact.messages[contact.messages.length - 1].date;
+    getMinutChat(index) {
+      if (this.contacts[index].messages.length > 0) {
+      const lastMinDate = this.contacts[index].messages[this.contacts[index].messages.length - 1].date;
+      const word = lastMinDate.split(' ');
+      return word[1];
+      } else {
+      return 'Nessun messaggio';
+      }
+    },
+    getMinutMsg(messageIndex) {
+      const messages = this.contacts[this.counterChat].messages;
+      if (messages && messages.length > messageIndex && messageIndex >= 0) {
+        const lastMinDate = messages[messageIndex].date;
         const word = lastMinDate.split(' ');
         return word[1];
       } else {
@@ -63,7 +71,7 @@ createApp({
 
     getMinut(){
       const date = DateTime.now().setLocale('it');
-      console.log('Ora corrente:', date.toFormat('dd/MM/yyyy HH:mm:ss')); // Log dell'ora corrente
+      
       return date.toFormat('dd/MM/yyyy HH:mm:ss');
     },
     
