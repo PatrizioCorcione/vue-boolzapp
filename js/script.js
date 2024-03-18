@@ -102,5 +102,13 @@ createApp({
 
   }
   
-}).mount('#app');  
+}).mount('#app'); 
+
+const darkMode = document.querySelector('.fa-circle-notch')
+
+darkMode.addEventListener('click', ()=>{
+
+  document.querySelector('body').classList.toggle('dark')
+
+});
 
