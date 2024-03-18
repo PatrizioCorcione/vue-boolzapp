@@ -60,7 +60,7 @@ createApp({
     },
     getMinutMsg(messageIndex) {
       const messages = this.contacts[this.counterChat].messages;
-      if (messages && messages.length > messageIndex && messageIndex >= 0) {
+      if (messages.length > messageIndex) {
         const lastMinDate = messages[messageIndex].date;
         const word = lastMinDate.split(' ');
         return word[1];
@@ -75,7 +75,9 @@ createApp({
       return date.toFormat('dd/MM/yyyy HH:mm:ss');
     },
     
-    
+    toggleDarkMode(){
+      document.querySelector('body').classList.toggle('dark')
+    }
   },
 
   computed: {
@@ -104,11 +106,5 @@ createApp({
   
 }).mount('#app'); 
 
-const darkMode = document.querySelector('.fa-circle-notch')
 
-darkMode.addEventListener('click', ()=>{
-
-  document.querySelector('body').classList.toggle('dark')
-
-});
 
